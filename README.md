@@ -1,10 +1,13 @@
 # Actions On Google: Actions SDK Sample using Node.js and Cloud Functions for Firebase
 
-This sample shows how to create an app for the Google Assistant using the Actions SDK.
+This sample shows how to create an app for the Google Assistant using the Actions SDK including integration with dashbot.io
 
 ## Setup Instructions
 
 ### Steps
+1. Create an account on [https://www.dashbot.io](https://www.dashbot.io)
+1. Create a google bot on dashbot.io (make note of the API_KEY)
+1. Substitute the API_KEY created above for REPLACE_WITH_YOUR_DASHBOT_API_KEY in functions/index.js 
 1. Use the [Actions on Google Console](https://console.actions.google.com) to add a new project with a name of your choosing.
 1. Choose *Actions SDK* in the *Add actions to your app* section. A dialog pops up: leave it open because you will need it for an upcoming step.
 1. Deploy the fulfillment webhook provided in the `functions` folder using [Google Cloud Functions for Firebase](https://firebase.google.com/docs/functions/):
@@ -17,7 +20,20 @@ This sample shows how to create an app for the Google Assistant using the Action
 1. Open the Simulator in the Actions console.
 1. Type "Talk to my test app" in the simulator, or say "OK Google, talk to my test app" to any Actions on Google enabled device signed into your developer account.
 
+Note: to use dashbot on firebase when you must have entered a credit card for google cloud (though you can still use it for free)
+
+For more detailed on dashbot, see the [dashbot documentation](https://www.dashbot.io/docs).
+
 For more detailed information on deployment, see the [documentation](https://developers.google.com/actions/sdk/deploy-fulfillment).
+
+### Testing locally
+
+1. Install [ngrok](https://ngrok.com/)
+1. Run ngrok ```ngrok http 5000``` 
+1. Go back to the Dialogflow console and select *Fulfillment* from the left navigation menu. Enable *Webhook*, set the value of *URL* to the ngrok url from the previous step, then click *Save*.
+1. ```cd functions```
+1. ```npm install```
+1. ```npm start```
 
 ## References and How to report bugs
 * Actions on Google documentation: [https://developers.google.com/actions/](https://developers.google.com/actions/).
